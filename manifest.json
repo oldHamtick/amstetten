@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Amstetten",
+  "description": "Плагин форматирует скопированный диалог из Вконтакте.",
+  "content_scripts": [
+    {
+      "matches": ["http://vk.com/im*"],
+      "js": ["background.js", "jquery-2.0.3.min.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "clipboardWrite",
+    "clipboardRead",
+    "http://*/*", 
+    "https://*/*"
+  ],
+  "version": "0.2",
+  "author": "oldHamtick"
+}
