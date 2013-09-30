@@ -5,7 +5,7 @@
   "description": "Плагин форматирует скопированный диалог из Вконтакте.",
   "content_scripts": [
     {
-      "matches": ["http://vk.com/im*"],
+      "matches": ["http://vk.com/*"],
       "js": ["background.js", "jquery-2.0.3.min.js"]
     }
   ],
