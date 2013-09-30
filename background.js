@@ -24,7 +24,8 @@ function toDialogNode (node, offset) {
 			'offset' : offset};
 	}
 	var divParent = $(node).closest('.im_typing_wrap');
-	if (divParent.length || $(node).attr('class') == 'im_rows im_peer_rows') {
+	if (divParent.length || 
+      ['im_rows im_peer_rows', 'im_typing_wrap'].indexOf($(node).attr('class')) != -1) {
 		return {
 			'node' : $('.im_out,.im_in').last(), 
 			'offset' : -1};
@@ -34,11 +35,11 @@ function toDialogNode (node, offset) {
 
 function getFormattedDialog (selection) {
 	var base = {
-		'node' : $(selection.baseNode.parentNode).closest('.im_out,.im_in,.im_typing_wrap'),
+		'node' : $(selection.baseNode).closest('.im_out,.im_in,.im_typing_wrap'),
 		'offset' : getEntry (selection.baseNode, selection.baseOffset)
 	}
 	var extent = {
-		'node' : $(selection.extentNode.parentNode).closest('.im_out,.im_in,.im_typing_wrap'),
+		'node' : $(selection.extentNode).closest('.im_out,.im_in,.im_typing_wrap'),
 		'offset' : getEntry (selection.extentNode, selection.extentOffset)
 	}
 	var orderedNodes = orderNodes(base, extent);
