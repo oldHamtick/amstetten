@@ -1,7 +1,7 @@
 document.addEventListener ("copy", function(clipboard) {
 	var selection = window.getSelection();
-	if (isDialogSelected(selection.extentNode.parentNode,
-		                 selection.baseNode.parentNode)) {
+	if (isDialogSelected(selection.extentNode,
+		                 selection.baseNode)) {
 		clipboard.preventDefault();
 		console.log (selection);
 		var text = getFormattedDialog(selection);
@@ -24,7 +24,7 @@ function toDialogNode (node, offset) {
 			'offset' : offset};
 	}
 	var divParent = $(node).closest('.im_typing_wrap');
-	if (divParent.length) {
+	if (divParent.length || $(node).attr('class') == 'im_rows im_peer_rows') {
 		return {
 			'node' : $('.im_out,.im_in').last(), 
 			'offset' : -1};
